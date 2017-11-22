@@ -40,15 +40,15 @@ function latexalign{T}(arr::AbstractArray{T,2})
         str *= "$(arr[i,1]) =& $(arr[i,2]) \\\\ \n"
     end
     str *= "\\end{align}\n"
-    return str
+    return LaTeXString(str)
 end
 
 function latexalign(lhs::AbstractArray, rhs::AbstractArray)
-    return latexalign(latexify(hcat(lhs, rhs)))
+    return LaTeXString(latexalign(latexify(hcat(lhs, rhs))))
 end
 
 function latexalign(ode::DiffEqBase.AbstractParameterizedFunction; field::Symbol=:funcs)
     lhs = [parse("d$x/dt") for x in ode.syms]
     rhs = getfield(ode, field)
-    return latexalign(lhs, rhs)
+    return LaTeXString(latexalign(lhs, rhs))
 end

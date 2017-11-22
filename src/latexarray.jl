@@ -26,6 +26,7 @@ function latexarray{T}(arr::AbstractArray{T, 2}; adjustment::Symbol=:c)
     str *= "\\end{array}\n"
     str *= "\\right]\n"
     str *= "\\end{equation}\n"
+    LaTeXString(str)
 end
 
 function latexarray{T}(arr::AbstractArray{T, 1}; adjustment::Symbol=:c)
@@ -43,4 +44,5 @@ function latexarray{T}(arr::AbstractArray{T, 1}; adjustment::Symbol=:c)
     str *= "\\end{array}\n"
     str *= "\\right]\n"
     str *= "\\end{equation}\n"
+    LaTeXString(str)
 end
